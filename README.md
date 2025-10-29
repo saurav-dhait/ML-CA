@@ -1,4 +1,4 @@
-# ML-CA ( ☢️WORK IN PROGRESS )
+# ML-CA Report
 # Rocket Detection using YOLOv11 and YOLOv12
 
 ## Overview
@@ -202,8 +202,8 @@ Do inference on new rocket images to get a visual overview of what the model has
 ---
 
 ## Conclusion
-While YOLOv11s generally outperforms YOLOv12s in this validation, the choice may depend on the specific use case—if 
-higher precision and recall are essential, YOLOv11s is preferable. If speed is a critical factor, YOLOv11s also has an 
+While YOLOv11s is better than YOLOv12s in this experiment, the choice may depend on the specific use case if 
+higher precision and recall are essential, YOLOv11s is better. If speed is more important factor, YOLOv11s also has an 
 edge here.
 
 1. YOLOv11s shows significantly higher overall precision, recall, and mAP scores compared to YOLOv12s, indicating it performs better across most metrics.
