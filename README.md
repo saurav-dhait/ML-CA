@@ -139,24 +139,76 @@ Do inference on new rocket images to get a visual overview of what the model has
 - **Image Size**: 640×640
 - **Augmentation**: Mosaic, flip, brightness/contrast (This is done automatically)
 
-### Results
+### Model Performance Comparison
 
-| Model | mAP@0.5 | mAP@0.5:0.95 | Precision | Recall | Inference Time (ms) |
-|-------|---------|--------------|-----------|--------|---------------------|
-| **YOLOv11n** | 0.532 | 0.387 | 0.621 | 0.548 | 1.64 |
-| **YOLOv12n** | 0.549 | 0.406 | 0.598 | 0.587 | 1.64 |
-| **YOLOv11m** | 0.618 | 0.465 | 0.672 | 0.623 | 4.86 |
-| **YOLOv12m** | 0.634 | 0.478 | 0.651 | 0.658 | 4.86 |
+| Metric / Class   | YOLOv11s | YOLOv12s |
+|------------------|-----------|-----------|
+| **Framework** | Ultralytics 8.3.40 | Ultralytics 8.3.63 |
+| **Layers** | 238 | 376 |
+| **Parameters** | 9,413,961 | 9,075,369 |
+| **GFLOPs** | 21.3 | 19.3 |
+| **Images Evaluated** | 2376 | 2376 |
+| **Instances** | 2687 | 2687 |
+
+### Overall Metrics
+| Metric | YOLOv11s | YOLOv12s |
+|--------|-----------|-----------|
+| Precision | 0.777 | 0.59 |
+| Recall | 0.737 | 0.529 |
+| mAP@50 | 0.774 | 0.549 |
+| mAP@50–95 | 0.450 | 0.278 |
+
+### Class-wise Metrics
+| Class | Metric | YOLOv11s | YOLOv12s |
+|--------|---------|-----------|-----------|
+| Engine Flames | Precision | 0.863 | 0.659 |
+| Engine Flames | Recall | 0.860 | 0.789 |
+| Engine Flames | mAP@50 | 0.909 | 0.811 |
+| Engine Flames | mAP@50–95 | 0.599 | 0.460 |
+| Rocket Body | Precision | 0.843 | 0.614 |
+| Rocket Body | Recall | 0.848 | 0.600 |
+| Rocket Body | mAP@50 | 0.900 | 0.622 |
+| Rocket Body | mAP@50–95 | 0.582 | 0.313 |
+| Space | Precision | 0.624 | 0.496 |
+| Space | Recall | 0.504 | 0.197 |
+| Space | mAP@50 | 0.512 | 0.214 |
+| Space | mAP@50–95 | 0.170 | 0.061 |
+
+### Inference Speed
+| Stage | YOLOv11s (ms/img) | YOLOv12s (ms/img) |
+|--------|--------------------|--------------------|
+| Preprocess | 0.1 | 0.1 |
+| Inference | 2.4 | 3.7 |
+| Loss | 0.0 | 0.0 |
+| Postprocess | 1.3 | 0.9 |
 
 
-### Graphs
 
+
+### Graphs Results
+
+#### YOLOv11s
+![YOLOv12 Architecture](assets/v11cm.png)
+![YOLOv12 Architecture](assets/results11.png)
+![YOLOv12 Architecture](assets/PR_curve11.png)
+
+--- 
+
+#### YOLOv12s
+![YOLOv12 Architecture](assets/v12cm.png)
+![YOLOv12 Architecture](assets/results12.png)
+![YOLOv12 Architecture](assets/PR_curve12.png)
 
 ---
 
 ## Conclusion
+While YOLOv11s generally outperforms YOLOv12s in this validation, the choice may depend on the specific use case—if 
+higher precision and recall are essential, YOLOv11s is preferable. If speed is a critical factor, YOLOv11s also has an 
+edge here.
 
-
+1. YOLOv11s shows significantly higher overall precision, recall, and mAP scores compared to YOLOv12s, indicating it performs better across most metrics.
+2. YOLOv12s has somewhat higher mAP@50 and mAP@50–95.
+3. Inference speed is faster in YOLOv11s making it more efficient.
 ---
 
 ## References
